@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f6">
+  <title>캐릭터 볼 파이트</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="캐릭터 볼 파이트 홈"><span class="brand-mark">●</span> BALL FIGHT</a>
+      <span class="top-note"><i></i> 자동 대전 시뮬레이터</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow">ROUND 01 <span></span> AUTO BATTLE</div>
+      <h1 id="page-title">캐릭터 볼 파이트</h1>
+      <p>두 캐릭터를 고르고 시작하세요. 승부는 볼들이 알아서 냅니다.</p>
+    </section>
+
+    <section class="battle-layout" aria-label="대전 설정과 게임 화면">
+      <aside class="fighter-panel fighter-panel-left" aria-label="플레이어 1 캐릭터 선택">
+        <div class="panel-heading"><span class="player-tag p1-tag">P1</span><span>PLAYER ONE</span><button class="more-button" data-player="1" aria-label="플레이어 1 캐릭터 정보 보기">···</button></div>
+        <div class="selection-slot" id="slot-1"></div>
+        <div class="active-status" id="status-1"><span class="status-dot"></span> 캐릭터를 선택하세요</div>
+      </aside>
+
+      <section class="arena-column" aria-label="전투 경기장">
+        <div class="arena-topline"><span class="arena-label"><span class="live-dot"></span><span id="arena-state">READY TO FIGHT</span></span><span class="round-label">BEST OF 1</span></div>
+        <div class="arena-frame" id="arena-frame">
+          <canvas id="arena" aria-label="두 캐릭터의 자동 전투"></canvas>
+          <div class="arena-overlay" id="arena-overlay">
+            <div class="overlay-emblem">✦</div>
+            <strong>대전 준비</strong>
+            <span>캐릭터 두 명을 선택해 주세요</span>
+          </div>
+          <div class="arena-count" id="arena-count">ARENA 01</div>
+        </div>
+        <div class="arena-controls">
+          <button class="start-button" id="start-button" disabled><span>대전 시작</span><span class="button-arrow">↗</span></button>
+          <button class="utility-button" id="speed-button" type="button" aria-label="배속 변경" aria-pressed="false">속도 1×</button>
+          <button class="utility-button sound-button" id="sound-button" type="button" aria-label="효과음 끄기" aria-pressed="true">소리 켬</button>
+          <button class="reset-button" id="reset-button" aria-label="초기화" title="초기화">↻</button>
+        </div>
+        <div class="match-footnote"><span>충돌 피해 <b>20 HP</b></span><span class="footnote-separator">·</span><span>먼저 0 HP가 되면 패배</span></div>
+      </section>
+
+      <aside class="fighter-panel fighter-panel-right" aria-label="플레이어 2 캐릭터 선택">
+        <div class="panel-heading"><span class="player-tag p2-tag">P2</span><span>PLAYER TWO</span><button class="more-button" data-player="2" aria-label="플레이어 2 캐릭터 정보 보기">···</button></div>
+        <div class="selection-slot" id="slot-2"></div>
+        <div class="active-status" id="status-2"><span class="status-dot"></span> 캐릭터를 선택하세요</div>
+      </aside>
+    </section>
+
+    <section class="character-details" aria-labelledby="details-title">
+      <div class="details-heading"><span class="details-kicker">CHARACTER GUIDE</span><h2 id="details-title">볼 상세 정보</h2><p>각 볼의 성격과 전투 능력, 자동 스킬을 확인하세요.</p></div>
+      <div class="detail-grid" id="detail-grid"></div>
+    </section>
+
+    <footer class="page-footer"><span>CHARACTER BALL FIGHT</span><span>심플하게, 끝까지.</span><span>v1.0</span></footer>
+  </main>
+
+  <dialog class="character-dialog" id="character-dialog">
+    <button class="dialog-close" id="dialog-close" aria-label="닫기">×</button>
+    <div class="dialog-art" id="dialog-art"></div>
+    <div class="dialog-content"><div class="dialog-kicker" id="dialog-kicker"></div><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="stat-row"><span>체력</span><div class="stat-track"><i></i></div><b>500</b></div><div class="stat-row"><span>공격력</span><div class="stat-track attack-track"><i></i></div><b id="dialog-attack"></b></div><div class="skill-card"><span class="skill-icon">✦</span><div><small>자동 스킬 · 캐릭터별 쿨타임</small><strong id="dialog-skill"></strong><p id="dialog-skill-description"></p></div></div></div>
+  </dialog>
+  <script src="game.js"></script>
+</body>
+</html>
