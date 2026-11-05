@@ -16,6 +16,6 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    address = ("0.0.0.0", 4000)
+    address = ("0.0.0.0", int(os.environ.get("PORT", 4000)))
     print("Character Ball Fight is ready at http://localhost:4000")
     ThreadingHTTPServer(address, Handler).serve_forever()
